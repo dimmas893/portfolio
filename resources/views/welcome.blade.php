@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Primary Meta Tags -->
-    <title>Portfolio Template - Open source</title>
+    <title>Ananda Dimmas Budiarto</title>
     <meta name="title" content="Portfolio Template - Open source" />
     <meta name="description"
         content="Build or customize your portfolio website using this super easy template. Free to use if you are a member of the community or a contributor to this project" />

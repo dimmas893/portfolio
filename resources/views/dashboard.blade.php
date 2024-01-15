@@ -1,4 +1,7 @@
 @extends('layouts.template.Template')
+@section('title')
+    dashboard
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-8 d-flex align-items-strech">
