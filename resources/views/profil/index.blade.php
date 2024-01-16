@@ -103,7 +103,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Foto</label>
-                            <input type="file" class="form-control" accept="image/jpeg" @change="galeryFunction" />
+                            <input type="file" class="form-control" @change="galeryFunction" />
                             <img v-if="foto" v-bind:src="foto" class="form-control" alt="Image Preview">
                         </div>
                     </div>
