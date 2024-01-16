@@ -66,9 +66,8 @@
                                 <i class="fas fa-arrow-right"></i></a>
                         </li>
 
-                        <!-- Toggle switch -->
                         <div class="theme-switch">
-                            <input type="checkbox" id="switch" />
+                            <input type="checkbox" id="switch" v-model="darkMode" @change="toggleDarkMode" />
                             <label class="toggle-icons" for="switch">
                                 <img class="moon" src="{{ asset('fe/assets/moon.svg') }}" />
                                 <img class="sun" src="{{ asset('fe/assets/sun.svg') }}" />
@@ -232,47 +231,62 @@
             <p>Copyright &copy; Communitypro <span id="datee"></span>, All rights reserved</p>
         </div>
     </footer>
-    <script src="{{ asset('fe/js/script.js') }}"></script>
-
+    <!-- Include Vue.js 3 -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@3"></script> --}}
     <script src="{{ asset('vue.js') }}"></script>
     <script src="{{ asset('axios.js') }}"></script>
     <script src="{{ asset('alert.js') }}"></script>
     <script src="{{ asset('overlay.js') }}"></script>
     <link href="{{ asset('overlay.css') }}" rel="stylesheet">
+
     <script>
-        var app = Vue.createApp({
+        // Use 'createApp' for Vue 3
+        const app = Vue.createApp({
             data() {
                 return {
                     datas: {},
+                    darkMode: false,
                 };
             },
             mounted() {
                 this.loadData();
+                this.loadDarkMode();
             },
             methods: {
                 setData(data) {
                     this.datas = data;
-                    // this.totalPages = data.last_page;
-                    // this.link = data.last_page;
-                    console.log(data)
                 },
                 loadData() {
-                    this.loading = true;
                     axios.get("{{ url('profil/getData') }}")
                         .then((response) => {
                             this.setData(response.data);
-
-                            // console.log(response)
                         })
                         .finally(() => {
                             this.loading = false;
                         });
                 },
+                toggleDarkMode() {
+                    this.saveDarkMode();
+                    console.log(this.darkMode);
+                },
+                saveDarkMode() {
+                    localStorage.setItem("darkMode", this.darkMode.toString());
+                    document.documentElement.setAttribute("data-theme", this.darkMode ? "dark" : "light");
+                },
+                loadDarkMode() {
+                    const darkMode = localStorage.getItem("darkMode");
+                    if (darkMode) {
+                        this.darkMode = darkMode === "true";
+                        this.saveDarkMode();
+                    }
+                },
             },
         });
 
-        const vm = app.mount('#welcome');
+        // Mount the app
+        app.mount('#welcome');
     </script>
+
 </body>
 
 </html>
