@@ -21,7 +21,7 @@ class ProfilController extends Controller
             'profesi' => $request->profesi,
             'profesi_detail' => $request->profesi_detail
         ]);
-        return response()->json(200);
+        return response()->json(['message' => 'Berhasil mengubah foto'], 200);
     }
 
     public function getData()
