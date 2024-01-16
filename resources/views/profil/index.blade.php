@@ -137,6 +137,9 @@
             },
             mounted() {
                 this.loadData();
+                $(document).on('show.bs.modal', '.modal', function() {
+                    $(this).appendTo('body');
+                });
             },
             methods: {
                 galeryFunction(event) {
