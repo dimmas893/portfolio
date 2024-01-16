@@ -13,5 +13,14 @@
                    <span class="hide-menu">Dashboard</span>
                </a>
            </li>
+           <li class="sidebar-item">
+               <a class="sidebar-link {{ request()->is('profil') ? 'active' : '' }}" href="{{ url('profil') }}"
+                   aria-expanded="false">
+                   <span>
+                       <i class="ti ti-layout-dashboard"></i>
+                   </span>
+                   <span class="hide-menu">Profil</span>
+               </a>
+           </li>
        </ul>
    </nav>

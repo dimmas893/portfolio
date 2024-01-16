@@ -46,164 +46,166 @@
 </head>
 
 <body>
-    <header id="hero">
-        <!-- Navbar -->
-        <nav class="navbar">
-            <div class="container">
-                <!-- Logo -->
-                <h1 id="logo">
-                    <a href="https://github.com/CommunityPro/portfolio-html"><img
-                            src="{{ asset('fe/assets/logo.png') }}" alt="Your Logo" /></a>
-                </h1>
-                <!-- Navbar links -->
-                <ul class="nav-menu">
-                    <li><a class="nav-link" href="#projects">PROJECTS</a></li>
-                    <li><a class="nav-link" href="#">CONTACT</a></li>
-                    <li><a class="nav-link" href="#">BlOG</a></li>
-                    <li>
-                        <a class="nav-link btn btn-primary" href="https://github.com/CommunityPro/portfolio-html">RESUME
-                            <i class="fas fa-arrow-right"></i></a>
-                    </li>
+    <div id="welcome">
 
-                    <!-- Toggle switch -->
-                    <div class="theme-switch">
-                        <input type="checkbox" id="switch" />
-                        <label class="toggle-icons" for="switch">
-                            <img class="moon" src="{{ asset('fe/assets/moon.svg') }}" />
-                            <img class="sun" src="{{ asset('fe/assets/sun.svg') }}" />
-                        </label>
+        <header id="hero">
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="container">
+                    <!-- Logo -->
+                    <h1 id="logo">
+                        <a :href="datas.github"><img src="{{ asset('fe/assets/logo.png') }}" alt="Your Logo" /></a>
+                    </h1>
+                    <!-- Navbar links -->
+                    <ul class="nav-menu">
+                        <li><a class="nav-link" href="#projects">PROJECTS</a></li>
+                        <li><a class="nav-link" href="#">CONTACT</a></li>
+                        <li><a class="nav-link" href="#">BlOG</a></li>
+                        <li>
+                            <a class="nav-link btn btn-primary" :href="datas.github">RESUME
+                                <i class="fas fa-arrow-right"></i></a>
+                        </li>
+
+                        <!-- Toggle switch -->
+                        <div class="theme-switch">
+                            <input type="checkbox" id="switch" />
+                            <label class="toggle-icons" for="switch">
+                                <img class="moon" src="{{ asset('fe/assets/moon.svg') }}" />
+                                <img class="sun" src="{{ asset('fe/assets/sun.svg') }}" />
+                            </label>
+                        </div>
+                        <!-- Hamburger menu -->
+                    </ul>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
                     </div>
-                    <!-- Hamburger menu -->
-                </ul>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <section class="header-container">
-            <img class="profile-image" src="{{ asset('fe/assets/profile-image.svg') }}" alt="" />
-            <h1>Hi I'm Franklin</h1>
+            <section class="header-container">
+                <img class="profile-image" :src="datas.foto" alt="" />
+                <h1>@{{ datas.nama }}</h1>
 
+                <div class="content-text">
+                    <h2>@{{ datas.profesi }}</h2>
+                    {{-- <h2>products, brands, and experience.</h2> --}}
+
+                    <p>
+                        @{{ datas.profesi_detail }}
+                    </p>
+                </div>
+                <a :href="datas.github" class="btn btn-secondary" target="_blank">Connect
+                    With Me</a>
+            </section>
+        </header>
+
+        <!-- Projects -->
+        <section id="projects" class="project-container container">
+            <div class="division"></div>
             <div class="content-text">
-                <h2>Building digital</h2>
-                <h2>products, brands, and experience.</h2>
-
-                <p>
-                    A Frontend Developer and Visual Designer with experience in web
-                    design, brand identity and product design.
-                </p>
+                <h2>Projects</h2>
+                <p>Check out some of my personal and paid projects</p>
             </div>
-            <a href="https://github.com/CommunityPro/portfolio-html" class="btn btn-secondary" target="_blank">Connect
-                With Me</a>
+
+            <article class="project">
+                <!-- Project 1 -->
+                <div href="" class="card">
+                    <div class="project-info">
+                        <div class="project-bio">
+                            <h3>Project One</h3>
+                            <p>React, Redux, SASS</p>
+                        </div>
+
+                        <div class="project-link">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div href="" class="card">
+                    <div class="project-info">
+                        <div class="project-bio">
+                            <h3>Project Two</h3>
+                            <p>React, Redux, SASS</p>
+                        </div>
+
+                        <div class="project-link">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Porject 3 -->
+                <div href="" class="card">
+                    <div class="project-info">
+                        <div class="project-bio">
+                            <h3>Project Three</h3>
+                            <p>React, Redux, SASS</p>
+                        </div>
+
+                        <div class="project-link">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div href="" class="card">
+                    <div class="project-info">
+                        <div class="project-bio">
+                            <h3>Project Four</h3>
+                            <p>React, Redux, SASS</p>
+                        </div>
+
+                        <div class="project-link">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div href="" class="card">
+                    <div class="project-info">
+                        <div class="project-bio">
+                            <h3>Project Five</h3>
+                            <p>React, Redux, SASS</p>
+                        </div>
+
+                        <div class="project-link">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div href="" class="card">
+                    <div class="project-info">
+                        <div class="project-bio">
+                            <h3>Project Six</h3>
+                            <p>React, Redux, SASS</p>
+                        </div>
+
+                        <div class="project-link">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <a href="#" class="btn btn-secondary" target="_blank">See More <i
+                    class="fas fa-arrow-right"></i></a>
         </section>
-    </header>
 
-    <!-- Projects -->
-    <section id="projects" class="project-container container">
-        <div class="division"></div>
-        <div class="content-text">
-            <h2>Projects</h2>
-            <p>Check out some of my personal and paid projects</p>
-        </div>
-
-        <article class="project">
-            <!-- Project 1 -->
-            <div href="" class="card">
-                <div class="project-info">
-                    <div class="project-bio">
-                        <h3>Project One</h3>
-                        <p>React, Redux, SASS</p>
-                    </div>
-
-                    <div class="project-link">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div href="" class="card">
-                <div class="project-info">
-                    <div class="project-bio">
-                        <h3>Project Two</h3>
-                        <p>React, Redux, SASS</p>
-                    </div>
-
-                    <div class="project-link">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Porject 3 -->
-            <div href="" class="card">
-                <div class="project-info">
-                    <div class="project-bio">
-                        <h3>Project Three</h3>
-                        <p>React, Redux, SASS</p>
-                    </div>
-
-                    <div class="project-link">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div href="" class="card">
-                <div class="project-info">
-                    <div class="project-bio">
-                        <h3>Project Four</h3>
-                        <p>React, Redux, SASS</p>
-                    </div>
-
-                    <div class="project-link">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div href="" class="card">
-                <div class="project-info">
-                    <div class="project-bio">
-                        <h3>Project Five</h3>
-                        <p>React, Redux, SASS</p>
-                    </div>
-
-                    <div class="project-link">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div href="" class="card">
-                <div class="project-info">
-                    <div class="project-bio">
-                        <h3>Project Six</h3>
-                        <p>React, Redux, SASS</p>
-                    </div>
-
-                    <div class="project-link">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <a href="#" class="btn btn-secondary" target="_blank">See More <i class="fas fa-arrow-right"></i></a>
-    </section>
-
+    </div>
     <footer id="footer">
         <div class="container">
             <a href="mailto:communitypro47@gmail.com">communitypro47@gmail.com</a>
@@ -231,6 +233,46 @@
         </div>
     </footer>
     <script src="{{ asset('fe/js/script.js') }}"></script>
+
+    <script src="{{ asset('vue.js') }}"></script>
+    <script src="{{ asset('axios.js') }}"></script>
+    <script src="{{ asset('alert.js') }}"></script>
+    <script src="{{ asset('overlay.js') }}"></script>
+    <link href="{{ asset('overlay.css') }}" rel="stylesheet">
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    datas: {},
+                };
+            },
+            mounted() {
+                this.loadData();
+            },
+            methods: {
+                setData(data) {
+                    this.datas = data;
+                    // this.totalPages = data.last_page;
+                    // this.link = data.last_page;
+                    console.log(data)
+                },
+                loadData() {
+                    this.loading = true;
+                    axios.get("{{ url('profil/getData') }}")
+                        .then((response) => {
+                            this.setData(response.data);
+
+                            // console.log(response)
+                        })
+                        .finally(() => {
+                            this.loading = false;
+                        });
+                },
+            },
+        });
+
+        const vm = app.mount('#welcome');
+    </script>
 </body>
 
 </html>

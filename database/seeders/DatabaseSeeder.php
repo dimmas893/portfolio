@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Profil;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,6 +21,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'dimmas',
             'email' => 'dimmas@gmail.com',
             'password' => Hash::make('password')
+        ]);
+        Profil::create([
+            'nama' => 'Ananda Dimmas Budiarto',
+            'profesi' => 'Fullstack Web Developer',
+            'profesi_detail' => 'me fullstack developer in 2019',
+            'github' => 'https://github.com/dimmas893'
         ]);
     }
 }
