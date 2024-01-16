@@ -1,4 +1,4 @@
-@extends('layouts.template.template')
+@extends('layouts.template.Template')
 @section('title')
     Profil
 @endsection
