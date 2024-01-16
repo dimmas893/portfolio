@@ -210,6 +210,7 @@
                             // Mengirim data ke backend Laravel
                             axios.put(`{{ url('profil') }}/${this.id}`, formData)
                                 .then(response => {
+                                    $('#editModal').modal('hide');
                                     setTimeout(() => {
                                         Swal.fire({
                                             title: 'Success',
@@ -220,7 +221,6 @@
                                     // console.log(response)
                                     // Redirect ke halaman dimmas atau lakukan yang lain
                                     // window.location.href = '{{ url('review') }}';
-                                    $('#editModal').modal('hide');
                                     this.loadData();
                                 })
                                 .catch(error => {
