@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectCotroller;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,13 @@ Route::prefix('profil')->group(function () {
     Route::get('',  [ProfilController::class, 'index']);
     Route::get('getData',  [ProfilController::class, 'getData']);
     Route::put('{id}',  [ProfilController::class, 'update']);
+});
+Route::prefix('project')->group(function () {
+    Route::get('', [ProjectCotroller::class, 'index']);
+    Route::post('', [ProjectCotroller::class, 'create']);
+    Route::put('', [ProjectCotroller::class, 'update']);
+    Route::get('getData', [ProjectCotroller::class, 'getData']);
+    Route::delete('{id}', [ProjectCotroller::class, 'delete']);
 });
 // });
 

@@ -43,6 +43,76 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('fe/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('fe/css/utilities.css') }}" />
+    <style>
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .page-item {
+            margin: 0 5px;
+        }
+
+        .page-link {
+            color: #373e45;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #46515c;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .page-link:hover {
+            background-color: #000000;
+            color: #fff;
+        }
+
+        .page-item.active .page-link {
+            background-color: #000000;
+            color: #fff;
+            border: 1px solid #000000;
+        }
+
+        .page-item.disabled .page-link {
+            color: #6c757d;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        /* Dark Mode Styles */
+        [data-theme="dark"] .pagination .page-link {
+            color: #17a2b8;
+            /* Adjust color for dark mode */
+            border-color: #17a2b8;
+            /* Adjust border color for dark mode */
+        }
+
+        [data-theme="dark"] .pagination .page-link:hover {
+            background-color: #17a2b8;
+            color: #fff;
+        }
+
+        [data-theme="dark"] .pagination .page-item.active .page-link {
+            background-color: #17a2b8;
+            color: #fff;
+            border: 1px solid #17a2b8;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* CSS */
+        .search-icon {
+            cursor: pointer;
+        }
+
+        .search-icon:hover {
+            background-color: #e9ecef;
+            /* Warna latar belakang saat dihover */
+        }
+    </style>
 </head>
 
 <body>
@@ -113,99 +183,53 @@
             </div>
 
             <article class="project">
-                <!-- Project 1 -->
-                <div href="" class="card">
+                <div class="card" v-for="data in projects" :key="data.id"
+                    :style="{ 'background': 'url(' + data.foto + ') center center/cover' }">
                     <div class="project-info">
                         <div class="project-bio">
-                            <h3>Project One</h3>
-                            <p>React, Redux, SASS</p>
+                            <h3>@{{ data.nama }}</h3>
+                            <p>@{{ data.stack }}</p>
                         </div>
-
                         <div class="project-link">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div href="" class="card">
-                    <div class="project-info">
-                        <div class="project-bio">
-                            <h3>Project Two</h3>
-                            <p>React, Redux, SASS</p>
-                        </div>
-
-                        <div class="project-link">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Porject 3 -->
-                <div href="" class="card">
-                    <div class="project-info">
-                        <div class="project-bio">
-                            <h3>Project Three</h3>
-                            <p>React, Redux, SASS</p>
-                        </div>
-
-                        <div class="project-link">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div href="" class="card">
-                    <div class="project-info">
-                        <div class="project-bio">
-                            <h3>Project Four</h3>
-                            <p>React, Redux, SASS</p>
-                        </div>
-
-                        <div class="project-link">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div href="" class="card">
-                    <div class="project-info">
-                        <div class="project-bio">
-                            <h3>Project Five</h3>
-                            <p>React, Redux, SASS</p>
-                        </div>
-
-                        <div class="project-link">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div href="" class="card">
-                    <div class="project-info">
-                        <div class="project-bio">
-                            <h3>Project Six</h3>
-                            <p>React, Redux, SASS</p>
-                        </div>
-
-                        <div class="project-link">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+                            <a :href="data.link" target="_blank"><i class="fas fa-globe"></i></a>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <a href="#" class="btn btn-secondary" target="_blank">See More <i
-                    class="fas fa-arrow-right"></i></a>
+
+            <div class="container">
+                <div v-if="projects.length > 0" class="row mx-2">
+                    <!-- Elemen di pojok kanan -->
+                    <div class="col-12 col-md-12 d-flex justify-content-end">
+                        <nav aria-label="Page navigation" class="mobile-pagination">
+                            <ul class="pagination">
+                                {{-- <li v-if="currentPage > 1" :class="{ disabled: currentPage === 1 }">
+                                    <a class="page-link" @click="filter(currentPage - 1)" href="#">
+                                        Sebelumnya
+                                    </a>
+                                </li> --}}
+                                <li class="page-item" v-for="i in displayLink" :key="i"
+                                    :class="{ active: currentPage === i, hidden: i === totalPages }">
+                                    <a class="page-link" @click="filter(i)" href="#">
+                                        @{{ i }}
+                                    </a>
+                                </li>
+                                <li class="page-item" :class="{ active: currentPage === totalPages }">
+                                    <a class="page-link" @click="filter(totalPages)" href="#">
+                                        @{{ totalPages }}
+                                    </a>
+                                </li>
+                                {{-- <li v-if="currentPage < totalPages" :class="{ disabled: currentPage === totalPages }">
+                                    <a class="page-link" @click="filter(currentPage + 1)" href="#">
+                                        Selanjutnya
+                                    </a>
+                                </li> --}}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </div>
@@ -236,7 +260,6 @@
         </div>
     </footer>
     {{-- <script src="{{ asset('fe/js/script.js') }}"></script> --}}
-    <script></script>
     <script src="{{ asset('vue.js') }}"></script>
     <script src="{{ asset('axios.js') }}"></script>
     <script src="{{ asset('alert.js') }}"></script>
@@ -246,22 +269,55 @@
         const app = Vue.createApp({
             data() {
                 return {
+                    projects: [],
                     datas: {},
                     darkMode: false,
+                    currentPage: 1,
+                    totalPages: 1,
+                    link: [],
+                    perPage: 6,
+                    search: '',
                 };
             },
             mounted() {
                 this.loadData();
                 this.loadDarkMode();
+                this.loadDataProject();
             },
             methods: {
+                filter(page) {
+                    this.currentPage = page; // Set halaman saat ini
+                    this.loadData(); // Memuat data sesuai dengan halaman yang dipilih
+                },
                 setData(data) {
                     this.datas = data;
+                },
+                setDataProject(data) {
+
+                    this.projects = data.data;
+                    this.totalPages = data.last_page;
+                    this.link = data.last_page;
+                    console.log(this.projects)
                 },
                 loadData() {
                     axios.get("{{ url('profil/getData') }}")
                         .then((response) => {
                             this.setData(response.data);
+                        })
+                        .finally(() => {
+                            this.loading = false;
+                        });
+                },
+                loadDataProject() {
+                    axios.get("{{ url('project/getData') }}?page=" +
+                            this.currentPage +
+                            "&perPage=" +
+                            this.perPage +
+                            "&search=" +
+                            this.search
+                        )
+                        .then((response) => {
+                            this.setDataProject(response.data);
                         })
                         .finally(() => {
                             this.loading = false;
@@ -289,6 +345,27 @@
                         this.saveDarkMode();
                     }
                 },
+            },
+            computed: {
+                displayLink() {
+                    const displayCount = 5;
+                    const middleIndex = Math.ceil(displayCount / 2);
+                    let startPage = this.currentPage - middleIndex + 1;
+                    startPage = Math.max(1, startPage);
+
+                    let endPage = Math.min(this.totalPages, startPage + displayCount - 1);
+                    if (this.totalPages - startPage < middleIndex) {
+                        startPage = Math.max(1, startPage - (middleIndex - (this.totalPages - startPage)));
+                        endPage = Math.min(this.totalPages, startPage + displayCount - 1);
+                    }
+
+                    const links = [];
+                    for (let i = startPage; i <= endPage; i++) {
+                        links.push(i);
+                    }
+
+                    return links;
+                }
             },
         });
 

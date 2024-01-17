@@ -13,7 +13,6 @@ class ProfilController extends Controller
     }
     public function update($id, Request $request)
     {
-        // return $request->all();
         Profil::where('id', $id)->update([
             'nama' => $request->nama,
             'github' => $request->github,
